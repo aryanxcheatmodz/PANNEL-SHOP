@@ -54,15 +54,24 @@ def dashboard():
     """
 
 
-@app.route("/generate")
+@app.route("/generate", methods=["GET","POST"])
 def generate():
 
     if not session.get("admin"):
         return redirect("/admin")
 
+    if request.method == "POST":
+        username = request.form["username"]
+        expire = request.form["expire"]
+
+        return f"""
+        <h2>Key Generated Successfully ✅</h2>
+        <p>User: {username}</p>
+        <p>Expire Date: {expire}</p>
+        <p>Key: PANEL-{username}-2026</p>
+        """
+
     return """
-    <h2>Key Generate System</h2>
- return """
     <h2>Key Generate System</h2>
 
     <form method="post">
@@ -74,17 +83,4 @@ def generate():
 
         <button type="submit">Generate Key</button>
     </form>
-    """   
-
-
-@app.route("/user")
-def user():
-
-    return """
-    <h2>User Login</h2>
-    <p>User system coming next...</p>
     """
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=5000)

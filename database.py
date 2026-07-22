@@ -49,3 +49,15 @@ def save_key(key, expiry):
 
     db.commit()
     db.close()
+def add_user(username, password, license_key):
+
+    db = connect()
+    cursor = db.cursor()
+
+    cursor.execute(
+        "INSERT INTO users(username, password) VALUES(%s,%s)",
+        (username, password)
+    )
+
+    db.commit()
+    db.close()

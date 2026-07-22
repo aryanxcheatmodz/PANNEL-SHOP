@@ -93,9 +93,47 @@ return f"""
 @app.route("/user")
 def user():
 
+    @app.route("/user", methods=["GET","POST"])
+def user():
+
+    if request.method == "POST":
+
+        username = request.form["username"]
+        password = request.form["password"]
+
+        # अभी demo login
+        if username == "test" and password == "1234":
+            session["user"] = username
+            return redirect("/user/dashboard")
+
+        return "Wrong User Login"
+
     return """
     <h2>User Login</h2>
-    <p>User system coming next...</p>
+
+    <form method="post">
+
+    Username:<br>
+    <input name="username"><br>
+
+    Password:<br>
+    <input name="password" type="password"><br><br>
+
+    <button>Login</button>
+
+    </form>
+    """
+
+
+@app.route("/user/dashboard")
+def user_dashboard():
+
+    if not session.get("user"):
+        return redirect("/user")
+
+    return """
+    <h1>User Dashboard</h1>
+    <p>Login Successful ✅</p>
     """
 
 

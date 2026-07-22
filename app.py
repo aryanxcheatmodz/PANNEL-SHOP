@@ -62,8 +62,19 @@ def generate():
 
     return """
     <h2>Key Generate System</h2>
-    <p>Coming Next...</p>
-    """
+ return """
+    <h2>Key Generate System</h2>
+
+    <form method="post">
+        <label>Enter Username:</label><br>
+        <input type="text" name="username"><br><br>
+
+        <label>Enter Expire Date:</label><br>
+        <input type="date" name="expire"><br><br>
+
+        <button type="submit">Generate Key</button>
+    </form>
+    """   
 
 
 @app.route("/user")

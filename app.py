@@ -84,3 +84,14 @@ def generate():
         <button type="submit">Generate Key</button>
     </form>
     """
+@app.route("/user")
+def user():
+
+    return """
+    <h2>User Login</h2>
+    <p>User system coming next...</p>
+    """
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)

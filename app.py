@@ -66,12 +66,16 @@ def generate():
         username = request.form["username"]
         expire = request.form["expire"]
 
-        return f"""
-        <h2>Key Generated Successfully ✅</h2>
-        <p>User: {username}</p>
-        <p>Expire Date: {expire}</p>
-        <p>Key: PANEL-{username}-2026</p>
-        """
+         key = "PANEL-" + ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
+
+save_key(key, expire)
+
+return f"""
+<h2>Key Generated Successfully ✅</h2>
+<p>User: {username}</p>
+<p>Expire Date: {expire}</p>
+<p>Key: {key}</p>
+"""
 
     return """
     <h2>Key Generate System</h2>

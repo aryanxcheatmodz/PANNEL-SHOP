@@ -1,7 +1,9 @@
 from flask import Flask, request, session, redirect, url_for
 
 from config import ADMIN_USERNAME, ADMIN_PASSWORD
-
+from database import save_key
+import random
+import string
 app = Flask(__name__)
 app.secret_key = "pannel_shop_secret"
 

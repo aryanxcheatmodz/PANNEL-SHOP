@@ -37,3 +37,15 @@ def create_tables():
 
     db.commit()
     db.close()
+def save_key(key, expiry):
+
+    db = connect()
+    cursor = db.cursor()
+
+    cursor.execute(
+        "INSERT INTO keys_table (license_key, expiry_date, status) VALUES (%s,%s,%s)",
+        (key, expiry, "ACTIVE")
+    )
+
+    db.commit()
+    db.close()
